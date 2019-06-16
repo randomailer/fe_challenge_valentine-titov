@@ -1,0 +1,14 @@
+{
+  "name": "bundle",
+  "version": "1.0.0",
+  "main": "bundler.js",
+  "scripts": {
+    "create-bundle": "node index.js ./example/index.js",
+    "test": "mocha ./src"
+  },
+  "author": "Valentine Titov",
+  "devDependencies": {
+    "acorn": "6.1.1",
+    "mocha": "6.1.4"
+  }
+}
