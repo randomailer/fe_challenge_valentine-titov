@@ -27,8 +27,15 @@ const analizeFileRecursive = (path, previousPath) => {
   let result = ''
 
   const filePath = previousPath ? join(dirname(previousPath), path) : path
-  const source = fs.readFileSync(filePath, 'utf8')
-  const parsed = acorn.parse(source)
+  let source
+  let parsed
+  try {
+    source = fs.readFileSync(filePath, 'utf8')
+    parsed = acorn.parse(source)
+  } catch (err) {
+    console.warn(`Error: file '${filePath}' not found or not valid`)
+    return
+  }
 
   parsed.body.forEach(obj => {
     if (obj.declarations) {
